@@ -27,6 +27,7 @@ import { DualDashboardPreview } from './components/DualDashboardPreview';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { DealRoomModal } from './components/DealRoomModal';
 import { SubmitOpportunityModal } from './components/SubmitOpportunityModal';
+import heroImg from './assets/images/hero_jordan_venture_1791711973387.jpg';
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
@@ -186,7 +187,7 @@ export default function App() {
                 <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl group">
                   <div className="aspect-[16/10] w-full">
                     <img
-                      src="/src/assets/images/hero_jordan_venture_1791711973387.jpg"
+                      src={heroImg}
                       alt="Amman Modern Venture Architecture and Skyline"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       referrerPolicy="no-referrer"
