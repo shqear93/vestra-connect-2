@@ -11,9 +11,25 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // Apply saved language and theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search);
+          var l = q.get('lang') || localStorage.getItem('vc-lang');
+          var t = q.get('theme') || localStorage.getItem('vc-theme');
+          var d = document.documentElement;
+          if (l === 'ar') { d.lang = 'ar'; d.dir = 'rtl'; }
+          if (!t) t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          d.dataset.theme = t;
+        } catch (e) {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      })();
+    </script>
   </head>
-  <body class="bg-[#080C14] text-slate-100 antialiased selection:bg-cyan-500 selection:text-white font-['Plus_Jakarta_Sans',sans-serif]">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
