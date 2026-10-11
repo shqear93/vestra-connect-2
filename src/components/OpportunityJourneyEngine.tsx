@@ -119,20 +119,16 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
   const activeCaseData = caseStudies[selectedCase];
 
   return (
-    <div className="w-full rounded-2xl bg-panel border border-sine shadow-2xl p-6 sm:p-8">
+    <div className="w-full rounded-[2rem] bg-panel shadow-s3 p-6 sm:p-10">
       {/* Engine Header & Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-sine">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6">
         <div>
-          <div className="flex items-center gap-2 text-xs text-accent font-semibold tracking-wider">
-            <Sparkles className="w-4 h-4 text-accent" />
-            <span>{lang === 'ar' ? 'محرك رحلة الفرصة الحي' : 'THE OPPORTUNITY JOURNEY ENGINE'}</span>
-          </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-ink mt-1">
+          <h3 className="text-3xl sm:text-4xl font-bold tracking-[-0.03em] leading-tight text-ink text-balance">
             {lang === 'ar' 
               ? 'كيف تتحول الفكرة الخام إلى صفقة استثمارية موثوقة'
               : 'Watch How Messy Ideas Become Investable Deals'}
           </h3>
-          <p className="text-xs sm:text-sm text-dim mt-1 max-w-xl">
+          <p className="text-sm sm:text-base text-dim mt-1 max-w-xl">
             {lang === 'ar'
               ? 'نظام مرئي حي ينقل فرصة العمل من مسودة مبعثرة إلى ملف محقق ومطابق مع مستثمرين وغرفة صفقة مشفرة.'
               : 'A living system that takes unstructured business concepts and visibly moves them to a verified, investable profile connected to vetted capital.'}
@@ -141,27 +137,27 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
 
         {/* Case selector & Auto-play controls */}
         <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <div className="flex items-center p-1 rounded-xl bg-panel2 border border-sine">
+          <div className="flex items-center p-1 rounded-2xl bg-panel2">
             <button
               onClick={() => setSelectedCase('franchise')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                selectedCase === 'franchise' ? 'bg-accent/20 text-accent-hi border border-accent/30' : 'text-dim hover:text-ink'
+ className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                selectedCase === 'franchise' ? 'bg-panel text-accent shadow-s1' : 'text-dim hover:text-ink'
               }`}
             >
               {t("Food Franchise")}
             </button>
             <button
               onClick={() => setSelectedCase('agritech')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                selectedCase === 'agritech' ? 'bg-accent/20 text-accent-hi border border-accent/30' : 'text-dim hover:text-ink'
+ className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                selectedCase === 'agritech' ? 'bg-panel text-accent shadow-s1' : 'text-dim hover:text-ink'
               }`}
             >
               {t("AgriTech")}
             </button>
             <button
               onClick={() => setSelectedCase('ai')}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                selectedCase === 'ai' ? 'bg-accent/20 text-accent-hi border border-accent/30' : 'text-dim hover:text-ink'
+ className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                selectedCase === 'ai' ? 'bg-panel text-accent shadow-s1' : 'text-dim hover:text-ink'
               }`}
             >
               {t("Enterprise AI")}
@@ -170,10 +166,10 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
 
           <button
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-chip hover:bg-chip-hi text-xs font-medium text-ink2 border border-sine2 transition-colors"
+ className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-chip hover:bg-chip-hi text-xs font-medium text-ink2 transition-colors"
           >
             {isAutoPlaying ? <Pause className="w-3.5 h-3.5 text-accent" /> : <Play className="w-3.5 h-3.5 text-accent" />}
-            <span>{isAutoPlaying ? 'Pause Journey' : 'Auto Play'}</span>
+            <span>{isAutoPlaying ? t('Pause Journey') : t('Auto Play')}</span>
           </button>
         </div>
       </div>
@@ -191,17 +187,17 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                 setCurrentStageIndex(idx);
                 setIsAutoPlaying(false);
               }}
-              className={`text-start p-3 rounded-xl border transition-all cursor-pointer relative overflow-hidden ${
+ className={`text-start p-3 rounded-xl transition-all cursor-pointer relative overflow-hidden ${
                 isActive
-                  ? 'bg-panel2 border-accent/60 shadow-lg shadow-accent/20 ring-1 ring-accent/30'
+                  ? 'bg-panel2 shadow-lg shadow-accent/20 '
                   : isPast
-                  ? 'bg-panel2/60 border-sine2/60 text-ink2 hover:border-sine2'
-                  : 'bg-panel2/30 border-sine/80 text-faint hover:border-sine2'
+                  ? 'bg-panel2/60 text-ink2 '
+                  : 'bg-panel2/30 text-faint '
               }`}
             >
               {/* Active step progress indicator */}
               <div className="flex items-center justify-between text-xs mb-1.5">
-                <span className={`font-mono text-xs ${isActive ? 'text-accent font-bold' : isPast ? 'text-ok' : 'text-faint'}`}>
+                <span className={`tabular-nums text-xs ${isActive ? 'text-accent font-bold' : isPast ? 'text-ok' : 'text-faint'}`}>
                   0{stage.number}
                 </span>
                 {isPast ? (
@@ -229,51 +225,51 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
       </div>
 
       {/* Main Dynamic Stage Canvas: Morphing Opportunity Transformation View */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 rounded-2xl bg-sunken/70 border border-sine/80">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 rounded-3xl bg-panel2/70">
         {/* Left Side: Explanatory Context of Current Stage (5 cols) */}
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 text-xs text-dim">
+
+            <h4 className="text-3xl font-bold tracking-tight text-ink">
+              {lang === 'ar' ? activeStage.arabicTitle : activeStage.title}
+            </h4>
+            <div className="flex items-center gap-2 text-sm text-dim mt-2">
               <span className="text-accent font-medium">{t("Stage")} {activeStage.number} {t("of")} 6</span>
               <span aria-hidden="true">·</span>
               <span className="text-ok font-medium">{t(activeStage.metric)}</span>
             </div>
-
-            <h4 className="text-2xl font-bold text-ink mt-1.5">
-              {lang === 'ar' ? activeStage.arabicTitle : activeStage.title}
-            </h4>
-            <p className="text-xs sm:text-sm text-ink2 mt-2 leading-relaxed">
+            <p className="text-sm sm:text-base text-ink2 mt-2 leading-relaxed">
               {lang === 'ar' ? activeStage.arabicSubtext : activeStage.subtext}
             </p>
 
             {/* Stage Progress Gauge */}
-            <div className="mt-6 p-4 rounded-xl bg-panel2/60 border border-sine">
+            <div className="mt-6 p-4 rounded-xl bg-panel2/60">
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="text-dim">{t("Trust & Readiness Velocity")}</span>
                 <span className="text-accent font-bold tabular-nums">{activeStage.completeness}% {t("Ready")}</span>
               </div>
               <div className="w-full h-2 bg-chip rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-info via-accent to-ok rounded-full transition-all duration-700"
+ className="h-full bg-gradient-to-r from-info via-accent to-ok rounded-full transition-all duration-700"
                   style={{ width: `${activeStage.completeness}%` }}
                 ></div>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-dim mt-3 pt-2 border-t border-sine/60">
+              <div className="flex items-center justify-between text-xs text-dim mt-3 pt-2">
                 <span>{t("Verification Authority: Vestra Trust Engine")}</span>
-                <span className="text-ink2">Level {currentStageIndex + 1} {t("Cleared")}</span>
+                <span className="text-ink2">{t("Level")} {currentStageIndex + 1} {t("Cleared")}</span>
               </div>
             </div>
           </div>
 
           {/* Quick Step Navigation */}
-          <div className="flex items-center justify-between pt-6 border-t border-sine/80 mt-6">
+          <div className="flex items-center justify-between pt-6 mt-6">
             <button
               onClick={() => {
                 setCurrentStageIndex((prev) => (prev > 0 ? prev - 1 : JOURNEY_STAGES.length - 1));
                 setIsAutoPlaying(false);
               }}
-              className="text-xs text-dim hover:text-ink px-3 py-1.5 rounded-lg bg-panel2 border border-sine"
+ className="inline-flex items-center gap-1.5 text-sm text-dim hover:text-ink px-4 py-2 rounded-xl bg-panel2 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5 rtl:-scale-x-100" />
               <span>{t("Previous Stage")}</span>
@@ -283,7 +279,7 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                 setCurrentStageIndex((prev) => (prev + 1) % JOURNEY_STAGES.length);
                 setIsAutoPlaying(false);
               }}
-              className="text-xs text-accent hover:text-accent-hi px-3 py-1.5 rounded-lg bg-panel2 border border-sine flex items-center gap-1"
+ className="inline-flex items-center gap-1.5 text-sm text-accent hover:text-accent-hi px-4 py-2 rounded-xl bg-panel2 transition-colors"
             >
               <span>{t("Next Stage")}</span>
               <ArrowRight className="rtl:-scale-x-100 w-3.5 h-3.5" />
@@ -293,9 +289,9 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
 
         {/* Right Side: The Morphing Live Opportunity Card (7 cols) */}
         <div className="lg:col-span-7 flex flex-col justify-center">
-          <div className="relative rounded-2xl bg-gradient-to-br from-panel2 to-panel border border-accent/30 p-6 shadow-2xl transition-all duration-500">
+          <div className="relative rounded-3xl bg-panel p-6 sm:p-7 shadow-s2 transition-all duration-500">
             {/* Header Lockup of the Morphing Card */}
-            <div className="flex items-start justify-between gap-3 pb-4 border-b border-sine">
+            <div className="flex items-start justify-between gap-3 pb-4">
               <div>
                 <div className="flex items-center gap-2 text-xs text-dim">
                   <span className="text-accent font-medium">{t(activeCaseData.tag)}</span>
@@ -307,7 +303,7 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                 </h5>
               </div>
 
-              <div className="px-3 py-1 rounded-md bg-accent/10 border border-accent/40 text-xs font-semibold text-accent-hi tabular-nums">
+              <div className="px-3 py-1 rounded-md bg-accent/10 text-xs font-semibold text-accent-hi tabular-nums">
                 {t(activeStage.badge)}
               </div>
             </div>
@@ -321,10 +317,10 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                     <span className="w-2 h-2 rounded-full bg-warn"></span>
                     <span>{t("Raw Input / Unstructured Founder Draft")}</span>
                   </div>
-                  <div className="p-4 rounded-xl bg-sunken/80 border border-dashed border-sine2 font-mono text-xs text-ink2 leading-relaxed">
+                  <div className="p-4 rounded-xl bg-sunken/80 tabular-nums text-xs text-ink2 leading-relaxed">
                     {t(activeCaseData.rawText)}
                   </div>
-                  <p className="text-xs text-dim">
+                  <p className="text-sm text-dim">
                     {t("Traditional directories reject this or bury it in forum noise. Vestra's structuring engine immediately formats it into an institutional prospectus.")}
                   </p>
                 </div>
@@ -338,24 +334,24 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                     <span>{t("Institutional Standardized Profile")}</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-xs">
-                    <div className="p-2.5 rounded-lg bg-sunken/80 border border-sine">
+                    <div className="p-2.5 rounded-lg bg-sunken/80">
                       <span className="text-dim text-xs block">{t("Target Round")}</span>
                       <span className="text-sm font-bold text-ok tabular-nums">{t(activeCaseData.structuredData.targetCapital)}</span>
                     </div>
-                    <div className="p-2.5 rounded-lg bg-sunken/80 border border-sine">
+                    <div className="p-2.5 rounded-lg bg-sunken/80">
                       <span className="text-dim text-xs block">{t("Current ARR")}</span>
                       <span className="text-sm font-bold text-ink tabular-nums">{t(activeCaseData.structuredData.currentARR)}</span>
                     </div>
-                    <div className="p-2.5 rounded-lg bg-sunken/80 border border-sine">
+                    <div className="p-2.5 rounded-lg bg-sunken/80">
                       <span className="text-dim text-xs block">{t("EBITDA Margin")}</span>
                       <span className="text-sm font-bold text-accent tabular-nums">{t(activeCaseData.structuredData.ebitda)}</span>
                     </div>
-                    <div className="p-2.5 rounded-lg bg-sunken/80 border border-sine">
+                    <div className="p-2.5 rounded-lg bg-sunken/80">
                       <span className="text-dim text-xs block">{t("Sector Classification")}</span>
                       <span className="text-sm font-bold text-ink2 truncate">{t(activeCaseData.structuredData.category)}</span>
                     </div>
                   </div>
-                  <div className="text-xs text-ink2 bg-sunken/60 p-2.5 rounded-lg border border-sine">
+                  <div className="text-xs text-ink2 bg-sunken/60 p-2.5 rounded-lg">
                     <strong className="text-dim font-medium">{t("Allocation Plan:")}</strong> {t(activeCaseData.structuredData.useOfFunds)}
                   </div>
                 </div>
@@ -370,7 +366,7 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                   </div>
                   <div className="space-y-1.5">
                     {activeCaseData.verificationDocs.map((doc, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-2 rounded-lg bg-sunken/70 border border-sine text-xs">
+                      <div key={idx} className="flex items-center justify-between p-2 rounded-lg bg-sunken/70 text-xs">
                         <span className="text-ink2 truncate">{t(doc.label)}</span>
                         <span className="text-ok font-medium text-xs flex items-center gap-1 shrink-0">
                           <Check className="w-3 h-3" />
@@ -391,13 +387,13 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                   </div>
                   <div className="space-y-2">
                     {activeCaseData.matches.map((match, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-2.5 rounded-xl bg-sunken/80 border border-sine text-xs">
+                      <div key={idx} className="flex items-center justify-between p-2.5 rounded-xl bg-sunken/80 text-xs">
                         <div>
                           <div className="font-semibold text-ink">{t(match.name)}</div>
                           <div className="text-xs text-dim">{t("Typical Ticket:")} {t(match.ticket)}</div>
                         </div>
                         <div className="text-end">
-                          <span className="px-2 py-0.5 rounded bg-info/10 border border-info/40 text-info font-mono font-bold text-xs">
+                          <span className="px-2 py-0.5 rounded bg-info/10 text-info tabular-nums font-bold text-xs">
                             {match.affinity} {t("Match")}
                           </span>
                         </div>
@@ -414,17 +410,17 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>{t("Confidential Direct Investor Dialogue")}</span>
                   </div>
-                  <div className="p-3.5 rounded-xl bg-sunken border border-sine space-y-2.5 text-xs">
+                  <div className="p-3.5 rounded-xl bg-sunken space-y-2.5 text-xs">
                     <div className="flex items-start gap-2.5">
                       <div className="w-6 h-6 rounded-full bg-info flex items-center justify-center text-xs font-bold text-on-accent shrink-0">
                         IN
                       </div>
-                      <div className="p-2.5 rounded-lg bg-panel2 border border-sine text-ink2 text-xs">
+                      <div className="p-2.5 rounded-lg bg-panel2 text-ink2 text-xs">
                         {t("\"We reviewed your audited unit metrics for the Amman flagship. The 31% EBITDA is compelling. We'd like to syndicate a $100k lead ticket.\"")}
                       </div>
                     </div>
                     <div className="flex items-start gap-2.5 justify-end">
-                      <div className="p-2.5 rounded-lg bg-accent/10 border border-accent/40 text-accent-hi text-xs text-end">
+                      <div className="p-2.5 rounded-lg bg-accent/10 text-accent-hi text-xs text-end">
                         {t("\"Thank you. Cap table and expansion leases are now accessible inside the encrypted Deal Room.\"")}
                       </div>
                       <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center text-xs font-bold text-on-accent shrink-0">
@@ -442,21 +438,21 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
                     <Lock className="w-3.5 h-3.5" />
                     <span>{t("Encrypted Virtual Deal Room #VC-2026-JO")}</span>
                   </div>
-                  <div className="p-4 rounded-xl bg-sunken border border-ok/40 space-y-2 text-xs">
+                  <div className="p-4 rounded-xl bg-sunken space-y-2 text-xs">
                     <div className="flex items-center justify-between text-ok font-medium">
                       <span>{t("Term Sheet Status: Issued & Under Legal Review")}</span>
-                      <span className="font-mono text-ink">{t("$150,000 Committed")}</span>
+                      <span className="tabular-nums text-ink">{t("$150,000 Committed")}</span>
                     </div>
                     <div className="grid grid-cols-3 gap-2 pt-2 text-xs text-dim">
-                      <div className="p-2 rounded bg-panel2 border border-sine text-center">
+                      <div className="p-2 rounded bg-panel2 text-center">
                         <strong className="text-ink block">{t("SHA Draft")}</strong>
                         <span>{t("Ready")}</span>
                       </div>
-                      <div className="p-2 rounded bg-panel2 border border-sine text-center">
+                      <div className="p-2 rounded bg-panel2 text-center">
                         <strong className="text-ink block">{t("Cap Table")}</strong>
                         <span>{t("Simulated")}</span>
                       </div>
-                      <div className="p-2 rounded bg-panel2 border border-sine text-center">
+                      <div className="p-2 rounded bg-panel2 text-center">
                         <strong className="text-ink block">{t("Closing Target")}</strong>
                         <span>{t("14 Days")}</span>
                       </div>
@@ -467,11 +463,11 @@ export const OpportunityJourneyEngine: React.FC<Props> = ({ lang = 'en', onLaunc
             </div>
 
             {/* Footer of Card */}
-            <div className="pt-3 border-t border-sine/80 flex items-center justify-between text-xs text-dim">
+            <div className="pt-3 flex items-center justify-between text-xs text-dim">
               <span>{t("Security: 256-Bit Encrypted Data Room")}</span>
               <button
                 onClick={onLaunchDealRoom}
-                className="text-accent hover:text-accent-hi font-medium flex items-center gap-1"
+ className="text-accent hover:text-accent-hi font-medium flex items-center gap-1"
               >
                 <span>{t("Launch Interactive Deal Room")}</span>
                 <ArrowRight className="rtl:-scale-x-100 w-3 h-3" />
