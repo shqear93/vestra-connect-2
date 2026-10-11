@@ -1,0 +1,6 @@
+{
+  "name": "Vestra Connect | Modern Jordan Investment & Deal Platform",
+  "description": "High-impact venture capital and founder deal platform featuring an interactive Jordan opportunity network map, live capital flow animation, and the Opportunity Journey Engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
