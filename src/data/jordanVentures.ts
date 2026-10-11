@@ -1,3 +1,8 @@
+import heroImg from '../assets/images/hero_jordan_venture_1791711973387.jpg';
+import greentechImg from '../assets/images/project_greentech_jordan_1791711986775.jpg';
+import medtechImg from '../assets/images/project_medtech_amman_1791711997656.jpg';
+import dealroomImg from '../assets/images/dealroom_executive_jordan_1791712008953.jpg';
+
 export interface VentureProject {
   id: string;
   name: string;
@@ -68,7 +73,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Gross Margin', value: '54%' }
     ],
     dealRoomStatus: 'Term Sheet Issued',
-    image: '/src/assets/images/project_greentech_jordan_1791711986775.jpg',
+    image: greentechImg,
     keyHighlights: [
       'Operational across 14 dunums in Deir Alla',
       'Exclusive distribution agreement with GCC premium supermarkets',
@@ -104,7 +109,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Monthly Scans', value: '18,500+' }
     ],
     dealRoomStatus: 'Diligence Stage',
-    image: '/src/assets/images/project_medtech_amman_1791711997656.jpg',
+    image: medtechImg,
     keyHighlights: [
       'Jordan FDA (JFDA) accredited & CE Mark registered',
       'Over 65,000 clinical samples processed without false negatives',
@@ -140,7 +145,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Dialect Precision', value: '98.1%' }
     ],
     dealRoomStatus: 'Active Discussions',
-    image: '/src/assets/images/hero_jordan_venture_1791711973387.jpg',
+    image: heroImg,
     keyHighlights: [
       'Serving 3 Jordanian commercial banks and 2 regional telecom operators',
       'Zero latency on-premise sovereign cloud deployments',
@@ -176,7 +181,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Port Partners', value: 'ASEZA & APM' }
     ],
     dealRoomStatus: 'Active Discussions',
-    image: '/src/assets/images/dealroom_executive_jordan_1791712008953.jpg',
+    image: dealroomImg,
     keyHighlights: [
       'Integrated with Aqaba Special Economic Zone Authority APIs',
       'Real-time GPS + thermal container sensor network',
@@ -212,7 +217,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'IRR Projection', value: '24.6%' }
     ],
     dealRoomStatus: 'Matching',
-    image: '/src/assets/images/project_greentech_jordan_1791711986775.jpg',
+    image: greentechImg,
     keyHighlights: [
       'Jordanian intellectual property in electrolyte stability',
       '25-year design lifespan with zero rare-earth toxic materials',
@@ -248,7 +253,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Rehab Centers', value: '6 Partner Clinics' }
     ],
     dealRoomStatus: 'Active Discussions',
-    image: '/src/assets/images/project_medtech_amman_1791711997656.jpg',
+    image: medtechImg,
     keyHighlights: [
       'Clinical trial completed in Royal Medical Services partnership',
       'Patient calibration via smartphone Bluetooth app',
@@ -284,7 +289,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'EBITDA Margin', value: '31%' }
     ],
     dealRoomStatus: 'Term Sheet Issued',
-    image: '/src/assets/images/dealroom_executive_jordan_1791712008953.jpg',
+    image: dealroomImg,
     keyHighlights: [
       'Anchor location in UNESCO-recognized As-Salt architectural district',
       'Franchise agreement signed for 2 prime locations in West Amman',
@@ -320,7 +325,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
       { label: 'Factories Contracted', value: '12 Facilities' }
     ],
     dealRoomStatus: 'Active Discussions',
-    image: '/src/assets/images/hero_jordan_venture_1791711973387.jpg',
+    image: heroImg,
     keyHighlights: [
       'Turnkey hardware + cloud SaaS telemetry subscription',
       'Installed in Zarqa Free Zone manufacturing plants',

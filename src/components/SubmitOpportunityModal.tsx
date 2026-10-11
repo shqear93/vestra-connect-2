@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 import { VentureProject } from '../data/jordanVentures';
+import heroImg from '../assets/images/hero_jordan_venture_1791711973387.jpg';
 
 interface Props {
   isOpen: boolean;
@@ -78,7 +79,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
         { label: 'Initial Status', value: 'Under Review' }
       ],
       dealRoomStatus: 'Matching',
-      image: '/src/assets/images/hero_jordan_venture_1791711973387.jpg',
+      image: heroImg,
       keyHighlights: [
         'Structured via Vestra Intake Engine',
         'Direct access to vetted Amman and regional angel syndicates',
