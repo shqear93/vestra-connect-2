@@ -40,18 +40,18 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
     e.preventDefault();
     if (!formData.name.trim() || !formData.summary.trim()) return;
 
-    // Coordinate mapping roughly for Jordan governorates
-    const coordsMap: Record<string, { x: number; y: number }> = {
-      'Amman Governorate': { x: 41, y: 36 },
-      'Irbid Governorate': { x: 34, y: 19 },
-      'Aqaba Governorate': { x: 19, y: 91 },
-      'Balqa (As-Salt)': { x: 35, y: 32 },
-      'Jordan Valley': { x: 31, y: 36 },
-      'Zarqa Governorate': { x: 46, y: 31 },
-      'Mafraq Governorate': { x: 55, y: 24 }
+    // Real governorate centres as [longitude, latitude]
+    const coordsMap: Record<string, [number, number]> = {
+      'Amman Governorate': [35.93, 31.95],
+      'Irbid Governorate': [35.85, 32.52],
+      'Aqaba Governorate': [35.01, 29.53],
+      'Balqa (As-Salt)': [35.73, 32.04],
+      'Jordan Valley': [35.62, 32.22],
+      'Zarqa Governorate': [36.09, 32.07],
+      'Mafraq Governorate': [36.21, 32.34],
     };
 
-    const chosenCoord = coordsMap[formData.governorate] || { x: 40, y: 37 };
+    const chosenLonLat = coordsMap[formData.governorate] || [35.93, 31.95];
 
     const newProj: VentureProject = {
       id: `custom-${Date.now()}`,
@@ -60,7 +60,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
       category: formData.category,
       governorate: formData.governorate,
       locationName: formData.locationName,
-      coordinates: chosenCoord,
+      lonLat: chosenLonLat,
       targetCapital: formData.targetCapital,
       capitalAmountUSD: formData.capitalAmountUSD,
       stage: formData.stage,

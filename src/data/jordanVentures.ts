@@ -10,7 +10,7 @@ export interface VentureProject {
   category: 'AgriTech' | 'MedTech' | 'Enterprise SaaS' | 'CleanTech' | 'Logistics' | 'Culinary & Retail';
   governorate: string;
   locationName: string;
-  coordinates: { x: number; y: number }; // Percentage on Jordan Map (0-100)
+  lonLat: [number, number]; // [longitude, latitude], projected onto the real Jordan outline
   targetCapital: string;
   capitalAmountUSD: number;
   stage: 'Pre-Seed' | 'Seed' | 'Growth' | 'Series A' | 'Pre-Series A';
@@ -38,7 +38,8 @@ export interface CapitalRoute {
   name: string;
   from: string;
   to: string;
-  pathD: string; // SVG path data
+  fromLonLat: [number, number];
+  toLonLat: [number, number];
   dealTitle: string;
   volume: string;
   duration: number; // Animation duration in seconds
@@ -52,7 +53,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'AgriTech',
     governorate: 'Jordan Valley (Al-Balqa)',
     locationName: 'Deir Alla, Jordan Valley',
-    coordinates: { x: 31, y: 36 },
+    lonLat: [35.6177, 32.2226], // [longitude, latitude]
     targetCapital: '$420,000',
     capitalAmountUSD: 420000,
     stage: 'Growth',
@@ -88,7 +89,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'MedTech',
     governorate: 'Amman Governorate',
     locationName: 'Abdali Medical District, Amman',
-    coordinates: { x: 42, y: 34 },
+    lonLat: [35.9060, 31.9650], // [longitude, latitude]
     targetCapital: '$750,000',
     capitalAmountUSD: 750000,
     stage: 'Series A',
@@ -124,7 +125,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'Enterprise SaaS',
     governorate: 'Amman Governorate',
     locationName: 'King Hussein Business Park (KHBP)',
-    coordinates: { x: 40, y: 37 },
+    lonLat: [35.8500, 31.9000], // [longitude, latitude]
     targetCapital: '$350,000',
     capitalAmountUSD: 350000,
     stage: 'Seed',
@@ -160,7 +161,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'Logistics',
     governorate: 'Aqaba Governorate',
     locationName: 'ASEZA Port Zone, Aqaba',
-    coordinates: { x: 19, y: 91 },
+    lonLat: [35.0120, 29.5130], // [longitude, latitude]
     targetCapital: '$600,000',
     capitalAmountUSD: 600000,
     stage: 'Pre-Series A',
@@ -196,7 +197,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'CleanTech',
     governorate: 'Mafraq Governorate',
     locationName: 'Mafraq Solar Corridor',
-    coordinates: { x: 55, y: 24 },
+    lonLat: [36.2800, 32.2800], // [longitude, latitude]
     targetCapital: '$520,000',
     capitalAmountUSD: 520000,
     stage: 'Seed',
@@ -232,7 +233,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'MedTech',
     governorate: 'Irbid Governorate',
     locationName: 'Yarmouk Tech Park, Irbid',
-    coordinates: { x: 34, y: 19 },
+    lonLat: [35.8600, 32.5400], // [longitude, latitude]
     targetCapital: '$220,000',
     capitalAmountUSD: 220000,
     stage: 'Seed',
@@ -268,7 +269,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'Culinary & Retail',
     governorate: 'Balqa (As-Salt)',
     locationName: 'Historic As-Salt Old City',
-    coordinates: { x: 35, y: 32 },
+    lonLat: [35.7283, 32.0390], // [longitude, latitude]
     targetCapital: '$180,000',
     capitalAmountUSD: 180000,
     stage: 'Growth',
@@ -304,7 +305,7 @@ export const JORDAN_VENTURES: VentureProject[] = [
     category: 'Enterprise SaaS',
     governorate: 'Zarqa Governorate',
     locationName: 'Zarqa Industrial Free Zone',
-    coordinates: { x: 46, y: 31 },
+    lonLat: [36.1250, 32.1000], // [longitude, latitude]
     targetCapital: '$480,000',
     capitalAmountUSD: 480000,
     stage: 'Seed',
@@ -341,8 +342,8 @@ export const JORDAN_CAPITAL_CORRIDORS: CapitalRoute[] = [
     name: 'Amman VC Syndicate → Aqaba Maritime Hub',
     from: 'Amman KHBP',
     to: 'Aqaba Port',
-    // SVG curved path connecting Amman (x:40, y:37) to Aqaba (x:19, y:91)
-    pathD: 'M 160 148 C 145 220, 95 300, 76 364',
+        fromLonLat: [35.85, 31.9],
+    toLonLat: [35.012, 29.513],
     dealTitle: 'RedSea Logistics Pre-Series A ($600k)',
     volume: '$600,000',
     duration: 3.5
@@ -352,7 +353,8 @@ export const JORDAN_CAPITAL_CORRIDORS: CapitalRoute[] = [
     name: 'Jordan Valley AgriTech → Amman Capital Pool',
     from: 'Deir Alla Valley',
     to: 'Abdali District',
-    pathD: 'M 124 144 C 138 140, 155 142, 168 136',
+    fromLonLat: [35.6177, 32.2226],
+    toLonLat: [35.906, 31.965],
     dealTitle: 'Wadi Verdant Growth Round ($420k)',
     volume: '$420,000',
     duration: 2.8
@@ -362,7 +364,8 @@ export const JORDAN_CAPITAL_CORRIDORS: CapitalRoute[] = [
     name: 'Irbid Tech Cluster → Amman Angel Syndicate',
     from: 'Yarmouk Hub',
     to: 'Amman KHBP',
-    pathD: 'M 136 76 C 142 105, 154 125, 160 148',
+    fromLonLat: [35.86, 32.54],
+    toLonLat: [35.85, 31.9],
     dealTitle: 'BionicNerve Seed Syndication ($220k)',
     volume: '$220,000',
     duration: 3.2
@@ -372,7 +375,8 @@ export const JORDAN_CAPITAL_CORRIDORS: CapitalRoute[] = [
     name: 'Amman Clean Fund → Mafraq HelioGrid Corridor',
     from: 'Amman Finance',
     to: 'Mafraq Solar Grid',
-    pathD: 'M 160 148 C 180 130, 205 110, 220 96',
+    fromLonLat: [35.85, 31.9],
+    toLonLat: [36.28, 32.28],
     dealTitle: 'HelioGrid Clean Energy Deployment ($520k)',
     volume: '$520,000',
     duration: 4.0
