@@ -7,15 +7,19 @@
    ------------------------------------------------------------------ */
 :root,
 :root[data-theme="dark"] {
-  --bg: #080c14;
-  --bg-2: #0a1019;
-  --panel: #0b111e;
-  --panel-2: #101827;
-  --sunken: #060a10;
-  --chip: #1b2638;
-  --chip-hi: #2a3850;
-  --line: rgba(148, 163, 184, 0.16);
-  --line-2: rgba(148, 163, 184, 0.3);
+  --bg: #070b13;
+  --bg-2: #0b1220;
+  --panel: #101828;
+  --panel-2: #172238;
+  --sunken: #050810;
+  --chip: #1e2b45;
+  --chip-hi: #2c3d5e;
+  --line: rgba(148, 163, 184, 0.12);
+  --line-2: rgba(148, 163, 184, 0.22);
+  /* Elevation: tonal lift plus a soft, offset shadow. No outlines. */
+  --sh-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 20px -10px rgba(0, 0, 0, 0.55);
+  --sh-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.7);
+  --sh-3: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 40px 90px -30px rgba(0, 0, 0, 0.85);
   --ink: #f4f7fb;
   --ink-2: #cdd7e5;
   --dim: #9aa9bf;
@@ -34,15 +38,18 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f3f6fb;
-  --bg-2: #ecf1f8;
+  --bg: #f2f5fa;
+  --bg-2: #e8edf6;
   --panel: #ffffff;
-  --panel-2: #eef3f9;
-  --sunken: #e6ecf5;
-  --chip: #e1e8f2;
-  --chip-hi: #cdd7e6;
-  --line: rgba(15, 23, 42, 0.12);
-  --line-2: rgba(15, 23, 42, 0.24);
+  --panel-2: #f0f4fa;
+  --sunken: #e3e9f3;
+  --chip: #e2e9f4;
+  --chip-hi: #ccd7e8;
+  --line: rgba(15, 23, 42, 0.08);
+  --line-2: rgba(15, 23, 42, 0.18);
+  --sh-1: 0 1px 2px rgba(16, 24, 40, 0.05), 0 8px 20px -10px rgba(16, 24, 40, 0.12);
+  --sh-2: 0 1px 2px rgba(16, 24, 40, 0.04), 0 24px 48px -24px rgba(16, 24, 40, 0.2);
+  --sh-3: 0 2px 4px rgba(16, 24, 40, 0.04), 0 40px 90px -30px rgba(16, 24, 40, 0.3);
   --ink: #0b1220;
   --ink-2: #2f3d52;
   --dim: #4d5c72;
@@ -85,8 +92,13 @@
   --color-glow-a: var(--glow-a);
   --color-glow-b: var(--glow-b);
 
-  --font-sans: "Plus Jakarta Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --shadow-s1: var(--sh-1);
+  --shadow-s2: var(--sh-2);
+  --shadow-s3: var(--sh-3);
+
+  --font-sans: "Hanken Grotesk", "Readex Pro", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Readex Pro", system-ui, sans-serif;
+  --font-mono: ui-monospace, Menlo, monospace;
 
   /* Type scale. Nothing in the UI drops below 13px. */
   --text-xs: 0.8125rem;
@@ -121,8 +133,15 @@
   }
 
   /* Arabic: its own face, looser leading, no tracking (it breaks letter joins). */
+  html[lang="ar"] body,
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5 {
+    font-family: "Readex Pro", "Hanken Grotesk", system-ui, sans-serif;
+  }
   html[lang="ar"] body {
-    font-family: "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, sans-serif;
     line-height: 1.85;
   }
   html[lang="ar"] * {
@@ -135,8 +154,10 @@
   html[lang="ar"] h5 {
     line-height: 1.35;
   }
-  html[lang="ar"] .font-mono {
-    font-family: "JetBrains Mono", ui-monospace, monospace;
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
   }
 
   :focus-visible {

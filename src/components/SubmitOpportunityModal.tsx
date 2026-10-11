@@ -99,33 +99,29 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-sunken/80 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-xl rounded-2xl bg-panel border border-sine2 shadow-2xl p-6 sm:p-8 my-8">
+      <div className="relative w-full max-w-xl rounded-2xl bg-panel shadow-2xl p-6 sm:p-8 my-8">
         <button
           onClick={onClose}
-          className="absolute top-5 end-5 p-2 rounded-xl bg-chip hover:bg-chip-hi text-dim hover:text-ink transition-colors"
+ className="absolute top-5 end-5 p-2 rounded-xl bg-chip hover:bg-chip-hi text-dim hover:text-ink transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {isSubmitted ? (
           <div className="text-center py-10 space-y-3">
-            <div className="w-14 h-14 rounded-full bg-ok/20 border border-ok/40 flex items-center justify-center text-ok mx-auto">
+            <div className="w-14 h-14 rounded-full bg-ok/20 flex items-center justify-center text-ok mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold text-ink">{t("Venture Successfully Structured!")}</h3>
-            <p className="text-xs sm:text-sm text-ink2 max-w-md mx-auto">
+            <p className="text-sm sm:text-base text-ink2 max-w-md mx-auto">
               {t("Your opportunity has been mapped onto the Jordan Venture Network with an initial 86% completeness score. Vestra verification team will review your commercial registry.")}
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <div className="flex items-center gap-2 text-xs text-accent font-semibold tracking-wider">
-                <Sparkles className="w-4 h-4 text-accent" />
-                <span>{t("VENTURE INTAKE ENGINE")}</span>
-              </div>
-              <h3 className="text-xl font-bold text-ink mt-1">{t("Submit Your Opportunity")}</h3>
-              <p className="text-xs text-dim mt-1">
+              <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-ink">{t("Submit Your Opportunity")}</h3>
+              <p className="text-sm text-dim mt-1">
                 {t("Move from a raw idea to an institutional profile mapped for Jordan and MENA angel syndicates.")}
               </p>
             </div>
@@ -139,7 +135,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder={t("e.g. Amman Autonomous Fleet Systems")}
-                  className="w-full bg-panel2 border border-sine2 rounded-xl px-3.5 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3.5 py-2.5 text-ink outline-none"
                 />
               </div>
 
@@ -149,7 +145,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3 py-2.5 text-ink outline-none"
                   >
                     <option value="AgriTech">{t("AgriTech & Climate")}</option>
                     <option value="MedTech">{t("MedTech & Biotech")}</option>
@@ -176,7 +172,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
 
                       setFormData({ ...formData, governorate: gov, locationName: loc });
                     }}
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3 py-2.5 text-ink outline-none"
                   >
                     <option value="Amman Governorate">{t("Amman Governorate")}</option>
                     <option value="Irbid Governorate">{t("Irbid Governorate")}</option>
@@ -201,7 +197,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                       setFormData({ ...formData, targetCapital: e.target.value, capitalAmountUSD: num });
                     }}
                     placeholder="$250,000"
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3.5 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3.5 py-2.5 text-ink outline-none"
                   />
                 </div>
 
@@ -210,7 +206,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                   <select
                     value={formData.stage}
                     onChange={(e) => setFormData({ ...formData, stage: e.target.value as any })}
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3 py-2.5 text-ink outline-none"
                   >
                     <option value="Pre-Seed">{t("Pre-Seed")}</option>
                     <option value="Seed">{t("Seed Round")}</option>
@@ -228,7 +224,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                   value={formData.summary}
                   onChange={(e) => setFormData({ ...formData, summary: e.target.value })}
                   placeholder={t("Summarize your current revenue, customer base in Jordan, and what the capital will accomplish...")}
-                  className="w-full bg-panel2 border border-sine2 rounded-xl px-3.5 py-2.5 text-ink outline-none focus:border-accent resize-none"
+ className="w-full bg-panel2 rounded-xl px-3.5 py-2.5 text-ink outline-none resize-none"
                 />
               </div>
 
@@ -241,7 +237,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                     value={formData.founderName}
                     onChange={(e) => setFormData({ ...formData, founderName: e.target.value })}
                     placeholder={t("e.g. Layla Al-Khasawneh")}
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3.5 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3.5 py-2.5 text-ink outline-none"
                   />
                 </div>
 
@@ -253,7 +249,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder={t("founder@venture.jo")}
-                    className="w-full bg-panel2 border border-sine2 rounded-xl px-3.5 py-2.5 text-ink outline-none focus:border-accent"
+ className="w-full bg-panel2 rounded-xl px-3.5 py-2.5 text-ink outline-none"
                   />
                 </div>
               </div>
@@ -267,7 +263,7 @@ export const SubmitOpportunityModal: React.FC<Props> = ({
 
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hi text-on-accent font-bold text-xs transition-colors flex items-center gap-2"
+ className="px-5 py-2.5 rounded-xl bg-accent hover:bg-accent-hi text-on-accent font-bold text-xs transition-colors flex items-center gap-2"
               >
                 <span>{t("Pin on Jordan Map")}</span>
                 <ArrowRight className="rtl:-scale-x-100 w-3.5 h-3.5" />
